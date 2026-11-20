@@ -157,7 +157,7 @@ function bar(){const n=Object.keys(S.q).length;$("#cnt").textContent=n?`${n} ite
 function fit(){document.body.style.paddingBottom=($("#bar").offsetHeight+16)+"px"}
 addEventListener("resize",fit);
 function show(rev,keep){$("#cnt").hidden=rev;$("#pick").hidden=rev;$("#rev").hidden=!rev;$("#back").hidden=!rev;$("#go").textContent=rev?RV?"Send to tech team":"Submit to "+(S.h.tech?"tech team":(mail(S.h.unit).split("@")[0]||"unit")):"Review request";
-if(rev){const have=!!ld("tsr-code",""),rq=SET().req;$("#cbox").hidden=have||!rq;$("#fc").hidden=!(have&&rq);$("#cmsg").hidden=true;$("#sum").innerHTML=[["Date","date"],["Trailer","trailer"],["Unit","unit"],["PAD/location","pad"],["Submitted by","by"],["Supervisor","sup"],["Sends to","email"]].filter(a=>S.h[a[1]]&&!(a[1]==="unit"&&S.h.tech)).map(a=>`<div class="rl"><span>${a[0]}</span><span>${E((a[1]==="email"&&S.h.tech?TP:"")+S.h[a[1]])}</span></div>`).join("")+"<h2>Items</h2>";$("#rl").innerHTML=Object.keys(S.q).map(id=>`<div class="rl"><span>${E(BY[id].n)}</span><span>${S.q[id]}</span></div>`).join("")||'<p class="empty">No items selected.</p>';if(S.x.trim())$("#rl").innerHTML+=`<div class="rl"><span>Additional: ${E(S.x)}</span></div>`}fit();if(!keep)scrollTo(0,0)}
+if(rev){const have=!!ld("tsr-code",""),rq=SET().req;$("#cbox").hidden=have||!rq;$("#fc").hidden=!(have&&rq);$("#cmsg").hidden=true;$("#sum").innerHTML=[["Date","date"],["Trailer","trailer"],["Unit","unit"],["PAD/location","pad"],["Submitted by","by"],["Supervisor","sup"],["Sends to","email"]].filter(a=>S.h[a[1]]&&!(a[1]==="unit"&&S.h.tech)).map(a=>`<div class="rl"><span>${a[0]}</span><span>${E((a[1]==="email"&&S.h.tech?TP:"")+S.h[a[1]])}</span></div>`).join("")+"<h2>Items</h2>";$("#rl").innerHTML=Object.keys(S.q).sort((a,b)=>BY[a].id-BY[b].id).map(id=>`<div class="rl"><span>${E(BY[id].n)}</span><span>${S.q[id]}</span></div>`).join("")||'<p class="empty">No items selected.</p>';if(S.x.trim())$("#rl").innerHTML+=`<div class="rl"><span>Additional: ${E(S.x)}</span></div>`}fit();if(!keep)scrollTo(0,0)}
 $("#x").addEventListener("input",e=>{S.x=e.target.value;save()});
 $("#back").onclick=()=>show(false);
 $("#fc").onclick=()=>{sv("tsr-code","");$("#cbox").hidden=false;$("#fc").hidden=true};
@@ -231,7 +231,7 @@ rowOf([[170,235,"Client","client",26],[380,456,"Submitted by","by",21]]);
 rowOf([[170,235,"Location","pad",60]]);
 rowOf([[170,235,"Sent to","email",60]]);
 y-=8;head();
-for(const L of r.lines){const a=wrap(L.item,34),g=wrap(String(L.k||"").split("|")[0]||"-",22),b=wrap(L.part||"-",34),n=Math.max(a.length,g.length,b.length);
+for(const L of [...r.lines].sort((p,q)=>(BY[p.k]?BY[p.k].id:1e9)-(BY[q.k]?BY[q.k].id:1e9))){const a=wrap(L.item,34),g=wrap(String(L.k||"").split("|")[0]||"-",22),b=wrap(L.part||"-",34),n=Math.max(a.length,g.length,b.length);
 if(y-n*12<50){np(1)}
 g.forEach((t,i)=>c+=T("F1",9,40,y-i*12,t));a.forEach((t,i)=>c+=T("F1",10,160,y-i*12,t));b.forEach((t,i)=>c+=T("F1",9,360,y-i*12,t));c+=T("F2",10,540,y,L.qty);y-=n*12+5}
 if(r.extra&&r.extra.trim()){y-=10;if(y<90)np();c+=T("F2",10,40,y,"Additional items");y-=15;
