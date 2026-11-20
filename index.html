@@ -220,7 +220,7 @@ function makePdf(r){
 const A=s=>String(s).replace(/[^\x20-\x7e]/g,"?").replace(/([\\()])/g,"\\$1");
 const T=(f,z,x,y,s)=>`BT /${f} ${z} Tf ${x} ${y} Td (${A(s)}) Tj ET\n`;
 const pg=[];let c="",y=0;
-const head=()=>{c+=T("F2",10,40,y,"Item")+T("F2",10,240,y,"Category")+T("F2",10,360,y,"Part #")+T("F2",10,540,y,"Qty")+`0.5 w 40 ${y-5} m 572 ${y-5} l S\n`;y-=20};
+const head=()=>{c+=T("F2",10,40,y,"Category")+T("F2",10,160,y,"Item")+T("F2",10,360,y,"Part #")+T("F2",10,540,y,"Qty")+`0.5 w 40 ${y-5} m 572 ${y-5} l S\n`;y-=20};
 const np=t=>{if(c)pg.push(c);c="";y=750;if(t)head()};
 np();c+="q 110 0 0 83.7 40 698 cm /Im1 Do Q\n"+T("F2",16,170,765,"Trailer supplies request");y=745;
 const H=r.h,rowOf=cs=>{let n=1;const o=[];for(const [lx,vx,l,k,wn] of cs){const v=(k==="unit"&&H.tech)?"":(k==="email"&&H.tech?TP:"")+(H[k]||"");if(!v)continue;const w=wrap(String(v),wn);n=Math.max(n,w.length);o.push([lx,vx,l,w])}
@@ -233,7 +233,7 @@ rowOf([[170,235,"Sent to","email",60]]);
 y-=8;head();
 for(const L of r.lines){const a=wrap(L.item,34),g=wrap(String(L.k||"").split("|")[0]||"-",22),b=wrap(L.part||"-",34),n=Math.max(a.length,g.length,b.length);
 if(y-n*12<50){np(1)}
-a.forEach((t,i)=>c+=T("F1",10,40,y-i*12,t));g.forEach((t,i)=>c+=T("F1",9,240,y-i*12,t));b.forEach((t,i)=>c+=T("F1",9,360,y-i*12,t));c+=T("F2",10,540,y,L.qty);y-=n*12+5}
+g.forEach((t,i)=>c+=T("F1",9,40,y-i*12,t));a.forEach((t,i)=>c+=T("F1",10,160,y-i*12,t));b.forEach((t,i)=>c+=T("F1",9,360,y-i*12,t));c+=T("F2",10,540,y,L.qty);y-=n*12+5}
 if(r.extra&&r.extra.trim()){y-=10;if(y<90)np();c+=T("F2",10,40,y,"Additional items");y-=15;
 for(const t of wrap(r.extra.replace(/\s*\n\s*/g," "),95)){if(y<50)np();c+=T("F1",10,40,y,t);y-=13}}
 pg.push(c);
