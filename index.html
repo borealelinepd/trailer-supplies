@@ -23,7 +23,7 @@ h2{font-size:1rem;margin:22px 0 8px}
 #sbar{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}#sbar span{padding:5px 10px;border-radius:99px;font-size:.8rem;font-weight:600;white-space:nowrap}
 #sv,#ls{border:1.5px solid var(--line)}#sv{color:var(--mut)}#ls.ok{border-color:var(--ok)}#ls.wait{background:var(--ac);color:var(--acink);border-color:var(--ac)}
 #brand{background:#fff;border-radius:8px;padding:4px 7px;flex:none}#brand img{display:block;height:46px;width:auto}
-#cneed,#rjb{border:2px solid var(--ac);background:var(--sf);padding:10px 12px;border-radius:8px;margin:0 0 10px;display:grid;gap:8px}
+#cneed,#rjb,#inst{border:2px solid var(--ac);background:var(--sf);padding:10px 12px;border-radius:8px;margin:0 0 10px;display:grid;gap:8px}
 #proto{margin:28px 0 8px;color:var(--mut);font-size:.85rem}
 #clr{padding:8px 12px;font-size:.85rem;white-space:nowrap}
 #chk{border:2px solid var(--ac);background:var(--sf);padding:10px 12px;border-radius:8px;margin:0 0 10px}
@@ -67,6 +67,7 @@ output.max{color:var(--bad)}
 <div class="w">
 <header><div id="brand"><img id="logo" alt="Boreal E-line Pump Down" width="60" height="46"></div><h1>Trailer supplies request</h1><button class="btn alt" id="clr">Clear form</button></header>
 <div id="sbar"><span id="st" role="status">Online</span><span id="sv"></span><span id="ls" role="status"></span></div>
+<div id="inst" hidden><strong>Install the form on your phone</strong><span id="insttx"></span><span><button type="button" class="btn" id="instgo">Install</button> <button type="button" class="btn alt" id="instx">Not now</button></span></div>
 <div id="cneed" role="alert" hidden><strong>Access code needed to send your waiting request.</strong><label>Access code<input id="code2" type="password" autocomplete="off" autocapitalize="off" autocorrect="off"></label><p id="cmsg2" style="color:var(--bad);font-weight:600;margin:0" hidden></p><button type="button" class="btn" id="csend">Enter code and send</button></div>
 <div id="rjb" role="alert" hidden><strong id="rjt"></strong><p id="rjm" style="margin:0"></p><span><button type="button" class="btn" id="rjfix">Fix request</button> <button type="button" class="btn alt" id="rjtry">Try again</button></span></div>
 <div id="rvb" role="status" hidden style="border:2px solid var(--ac);background:var(--sf);padding:10px 12px;border-radius:8px;margin:0 0 10px"></div>
@@ -170,7 +171,7 @@ if(miss.length){note("Fill in the required fields marked *: "+miss.map(f=>f[0]==
 if(!Object.keys(S.q).length&&!S.x.trim()){note("Add at least one item, or describe what you need under additional items.",1);return}
 if(RV){if(!navigator.onLine){note("You need a connection to send this. Try again when you have signal.",1);return}
 const b=$("#go");b.disabled=true;try{const j=await post({action:"forward",token:RT,h:S.h,lines:Object.keys(S.q).map(id=>({k:id,qty:S.q[id]})),extra:S.x});
-if(j&&j.ok){["pick","rev","bar","hdr","rvb"].forEach(i=>$("#"+i).hidden=true);$("#x").closest("label").hidden=true;note("Sent to the tech team. You can close this page.",0)}else note((j&&j.message)||"Couldn’t send. Try again.",1)}catch(e){note("Couldn’t reach the server. Check your connection and try again.",1)}b.disabled=false;return}
+if(j&&j.ok){["pick","rev","bar","hdr","rvb"].forEach(i=>$("#"+i).hidden=true);$("#x").closest("label").hidden=true;note(j.changed?"Sent to the tech team. The unit has been emailed the updated PDF. You can close this page.":"Sent to the tech team. You can close this page.",0)}else note((j&&j.message)||"Couldn’t send. Try again.",1)}catch(e){note("Couldn’t reach the server. Check your connection and try again.",1)}b.disabled=false;return}
 let code=ld("tsr-code","");
 if(!RV&&SET().req&&!code){const v=$("#code").value.trim(),m=$("#cmsg");
 if(badCode(v)){m.textContent=v?"That access code isn’t right. Check it and try again.":"Enter the access code to send. Ask your supervisor if you don’t have it.";m.hidden=false;$("#code").focus();return}
@@ -249,6 +250,17 @@ addEventListener("scroll",()=>{$("#up").hidden=scrollY<500},{passive:true});
 $("#up").onclick=()=>scrollTo({top:0,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
 addEventListener("online",()=>{flush();if(LIVE&&!RV)loadCat(false)});addEventListener("offline",status);
 $("#x").value=S.x||"";list();bar();status();if(!RV)flush();stamp();fit();
+let dp=null;const standalone=()=>matchMedia("(display-mode: standalone)").matches||navigator.standalone===true;
+const ios=/iphone|ipad|ipod/i.test(navigator.userAgent)&&!window.MSStream;
+function inst(){const b=$("#inst");if(!LIVE||RV||standalone()||ld("tsr-instx",0)){b.hidden=true;return}
+if(dp){$("#insttx").textContent="Open it like an app from your home screen, even without signal.";$("#instgo").hidden=false;b.hidden=false}
+else if(ios){$("#insttx").textContent="Tap the Share button, then “Add to Home Screen”.";$("#instgo").hidden=true;b.hidden=false}
+else b.hidden=true}
+addEventListener("beforeinstallprompt",e=>{e.preventDefault();dp=e;inst()});
+addEventListener("appinstalled",()=>{dp=null;$("#inst").hidden=true});
+$("#instgo").onclick=async()=>{if(!dp)return;dp.prompt();try{await dp.userChoice}catch(e){}dp=null;inst()};
+$("#instx").onclick=()=>{sv("tsr-instx",1);$("#inst").hidden=true};
+inst();
 async function loadCat(force){
 let c=ld("tsr-cat",null);const fresh_=c&&c.items&&Date.now()-c.at<(c.hours||24)*36e5;
 if(!navigator.onLine||(fresh_&&!force))return false;
