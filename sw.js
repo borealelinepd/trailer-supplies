@@ -1,5 +1,5 @@
 // Offline support. Change CACHE's version number whenever you update index.html so phones pick up the new file.
-const CACHE='tsr-v8',CORE=['./','index.html','manifest.webmanifest','icon-192.png','icon-512.png'];
+const CACHE='tsr-v9',CORE=['./','index.html','manifest.webmanifest','icon-192.png','icon-512.png'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==CACHE).map(x=>caches.delete(x)))).then(()=>self.clients.claim()))});
 self.addEventListener('fetch',e=>{const r=e.request,u=new URL(r.url);
