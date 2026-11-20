@@ -114,7 +114,7 @@ const LOGO="/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAQDAwMDAgQDAwMEBAQFBgoGBgUFBgwICQcK
 $("#logo").src="data:image/jpeg;base64,"+LOGO;
 // Catalog from the Jotform list. Later: load from Airtable (name, category, max qty, step, part #, notes, image) via a proxy and cache it.
 let ITEMS=[],BY={},CATS=["All"];
-function setCat(a){a=[...a];const o=[...new Set(a.map(x=>x.c))];a.sort((p,q)=>o.indexOf(p.c)-o.indexOf(q.c)||p.n.localeCompare(q.n,undefined,{numeric:true}));
+function setCat(a){ITEMS=a.map((x,i)=>({id:i,k:x.k,n:x.n,c:x.c,m:x.m,s:x.s,p:x.p||"",t:x.t||"",img:x.img||""}));BY=Object.fromEntries(ITEMS.map(i=>[i.k,i]));CATS=["All",...new Set(ITEMS.map(i=>i.c))]}
 const E=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;");
 const COL={"Job Tools":"#e0a100",Tools:"#8fb3c4",Supplies:"#b9c88a",Orings:"#d98a6c",
 "Cable head":"#b9a0d6","NXL Pack Off":"#7fc4a8","Titan Pack Off":"#e6c26a","Wireline Unit":"#c7c7c0"};
