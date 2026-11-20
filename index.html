@@ -162,7 +162,7 @@ $("#x").addEventListener("input",e=>{S.x=e.target.value;save()});
 $("#back").onclick=()=>show(false);
 $("#fc").onclick=()=>{sv("tsr-code","");$("#cbox").hidden=false;$("#fc").hidden=true};
 function note(t,err,btn){const m=$("#msg");m.textContent=t;m.className=err?"err":"";m.style.display="block";
-if(btn){const b=document.createElement("button");b.className="btn alt";b.style.marginTop="10px";b.textContent="Save PDF copy";b.onclick=savePdf;m.append(document.createElement("br"),b)}}
+if(btn&&!LIVE){const b=document.createElement("button");b.className="btn alt";b.style.marginTop="10px";b.textContent="Save PDF copy";b.onclick=savePdf;m.append(document.createElement("br"),b)}}
 $("#go").onclick=async()=>{
 if($("#pick").hidden===false){show(true);return}
 const miss=F.filter(f=>f[3]&&!(S.h[f[0]]||"").trim());if(!S.h.tech&&!(S.h.unit||"").trim())miss.push(F[2]);
