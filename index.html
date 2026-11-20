@@ -120,7 +120,7 @@ const E=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&q
 const COL={"Job Tools":"#e0a100",Tools:"#8fb3c4",Supplies:"#b9c88a",Orings:"#d98a6c",
 "Cable head":"#b9a0d6","NXL Pack Off":"#7fc4a8","Titan Pack Off":"#e6c26a","Wireline Unit":"#c7c7c0"};
 const ph=i=>"data:image/svg+xml,"+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" fill="${COL[i.c]||"#c9cdc6"}"/><text x="32" y="40" font-size="22" font-family="sans-serif" font-weight="700" text-anchor="middle" fill="#111">${i.n.replace(/[^A-Za-z0-9]/g,"").slice(0,2)}</text></svg>`);
-const img=i=>i.img?"images/"+encodeURIComponent(i.img):ph(i);
+const img=i=>i.img?(/^https:\/\//.test(i.img)?i.img:"images/"+encodeURIComponent(i.img)):ph(i);
 const ld=(k,d)=>{try{const v=JSON.parse(localStorage.getItem(k));return v==null?d:v}catch(e){return d}};
 const sv=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
 const today=new Date(Date.now()-new Date().getTimezoneOffset()*6e4).toISOString().slice(0,10);
@@ -148,7 +148,7 @@ chips();
 $("#chips").addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;cat=b.textContent;document.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed",x===b));list()});
 $("#s").addEventListener("input",list);
 $("#list").addEventListener("error",e=>{const t=e.target;if(t.tagName==="IMG"&&!t.dataset.f){t.dataset.f=1;t.src=ph(ITEMS[t.closest(".it").dataset.id])}},true);
-const card=i=>`<article class="it${S.q[i.k]?" on":""}" data-id="${i.id}"><img src="${E(img(i))}" alt="" width="56" height="56"><div class="nm"><b>${E(i.n)}</b><small>${i.p?"Part # "+E(i.p):"No part number"}${i.t?" ("+E(i.t)+")":""}</small><small>Max ${i.m}${i.s>1?", steps of "+i.s:""}</small></div><div class="st"><button data-d="-1" aria-label="Remove one ${E(i.n)}">−</button><output>${S.q[i.k]||0}</output><button data-d="1" aria-label="Add one ${E(i.n)}">+</button></div></article>`;
+const card=i=>`<article class="it${S.q[i.k]?" on":""}" data-id="${i.id}"><img src="${E(img(i))}" loading="lazy" alt="" width="56" height="56"><div class="nm"><b>${E(i.n)}</b><small>${i.p?"Part # "+E(i.p):"No part number"}${i.t?" ("+E(i.t)+")":""}</small><small>Max ${i.m}${i.s>1?", steps of "+i.s:""}</small></div><div class="st"><button data-d="-1" aria-label="Remove one ${E(i.n)}">−</button><output>${S.q[i.k]||0}</output><button data-d="1" aria-label="Add one ${E(i.n)}">+</button></div></article>`;
 function list(){const q=$("#s").value.trim().toLowerCase();const r=ITEMS.filter(i=>(cat==="All"||i.c===cat)&&(i.n+" "+i.p).toLowerCase().includes(q));
 $("#list").innerHTML=r.map(card).join("")||'<p class="empty">No items match. Try fewer letters, or add it under additional items when you review.</p>'}
 $("#list").addEventListener("click",e=>{const b=e.target.closest("button[data-d]");if(!b)return;const a=b.closest(".it"),i=ITEMS[a.dataset.id],cur=S.q[i.k]||0,n=Math.max(0,Math.min(i.m,cur+ +b.dataset.d*i.s));
