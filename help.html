@@ -44,18 +44,18 @@ code{background:light-dark(#eceae0,#262b2d);padding:1px 5px;border-radius:4px;ov
 </nav>
 <main>
 <h1>How to use Trailer Supplies</h1>
-<p class="lead">This is the trailer restock list. A tech picks what the trailer needs, the unit supervisor checks it, and the tech team gets one clean order. It works without signal: a request is saved on the phone and sent as soon as it's back online.</p>
+<p class="lead">This is the trailer restock list for operators. An operator picks what the trailer needs, the unit supervisor checks it, and the tech team gets one clean order. It works without signal: a request is saved on the phone and sent as soon as it's back online.</p>
 <p class="lead">The pictures use sample data (trailer T-12, unit 12, Sample Energy). Items and photos on your phone come from the live list.</p>
 
 <h2 id="flow">How a request travels</h2>
 <div class="flow">
-<div><b>1. Tech fills out the form</b>Picks items, taps <b>Review request</b>, then <b>Submit</b>.</div>
+<div><b>1. Operator fills out the form</b>Picks items, taps <b>Review request</b>, then <b>Submit</b>.</div>
 <div><b>2. Unit email arrives</b>The unit's address (for example borealpd12) gets the request as a PDF, plus a <b>Review and send to the tech team</b> link.</div>
 <div><b>3. Supervisor reviews</b>Opens the link, fixes quantities if needed, types their name, taps <b>Send to tech team</b>.</div>
 <div><b>4. Tech team gets the order</b>One email with the PDF, showing who submitted and who reviewed it.</div>
 <div><b>5. Unit gets the final copy, only if something changed</b>An <b>UPDATED</b> email with the final PDF, to print and check against what arrives.</div>
 </div>
-<div class="note"><b>Tech only</b> requests (a tech ordering for themselves, no unit) skip steps 2, 3 and 5 and go straight to the tech team.</div>
+<div class="note"><b>Tech team only</b> requests (ticked on the form, no unit) skip steps 2, 3 and 5 and go straight to the tech team.</div>
 
 <h2 id="install">Put it on your home screen</h2>
 <p>Install it once so it opens like an app and works with no signal. The first time you open the form on a phone, a banner offers it.</p>
@@ -76,7 +76,7 @@ code{background:light-dark(#eceae0,#262b2d);padding:1px 5px;border-radius:4px;ov
 <tr><td>2</td><td>Status</td><td><b>Online</b> or <b>Offline</b>. Offline is fine; keep working</td></tr>
 <tr><td>3</td><td>Last submission</td><td>When you last sent a request from this phone</td></tr>
 <tr><td>4</td><td>Header fields</td><td>Trailer, unit number, client, pad/location and your name. The unit number decides which unit email address the request goes to</td></tr>
-<tr><td>5</td><td>Tech only</td><td>Tick it to send straight to the tech team with no unit review</td></tr>
+<tr><td>5</td><td>Tech team only</td><td>Tick it to send an order straight to the tech team with no unit review</td></tr>
 <tr><td>6</td><td>Sends to</td><td>Shows the address the request will go to, so you can check the unit number</td></tr>
 <tr><td>7</td><td>Additional items</td><td>Anything that isn't in the list. One item per line, with a quantity</td></tr>
 <tr><td>8</td><td>Search</td><td>Search the list by name or part number</td></tr>
@@ -153,7 +153,7 @@ code{background:light-dark(#eceae0,#262b2d);padding:1px 5px;border-radius:4px;ov
 <h2 id="emails">The emails and the PDF</h2>
 <p>Every email has the request attached as a PDF, sorted by category and then item name.</p>
 
-<h3>1. Unit email (after the tech submits)</h3>
+<h3>1. Unit email (after the operator submits)</h3>
 <p>Goes to the unit address. The tech team does not get the order until the supervisor opens the link and sends it, even when nothing needs changing.</p>
 <img class="narrow" src="help/email-unit.jpg" alt="Unit email with review link" loading="lazy">
 
@@ -184,7 +184,7 @@ code{background:light-dark(#eceae0,#262b2d);padding:1px 5px;border-radius:4px;ov
 <tr><td>Banner with <b>Try again</b></td><td>Usually a bad connection. Tap it once you have signal</td></tr>
 <tr><td>Access code needed</td><td>Ask the office for the code. It's only used if that setting is switched on</td></tr>
 <tr><td>Limit reached</td><td>That trailer has sent 5 requests today. Try tomorrow, or have the supervisor edit the existing one</td></tr>
-<tr><td>Review link not valid</td><td>The link is older than 14 days or was already used. Ask the tech to submit again</td></tr>
+<tr><td>Review link not valid</td><td>The link is older than 14 days or was already used. Ask the operator to submit again</td></tr>
 <tr><td>Item list looks old</td><td>Phones refresh the list about once a day. Close all browser windows and reopen the form</td></tr>
 <tr><td>No email arrived</td><td>Check the unit number in <b>Sends to</b> and your junk folder. Then tell the admin</td></tr>
 </table>
