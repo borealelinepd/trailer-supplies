@@ -62,12 +62,13 @@ output.max{color:var(--bad)}
 #msg.err{border-color:var(--bad)}
 [hidden]{display:none!important}
 .hubback{display:inline-flex;align-items:center;min-height:44px;padding-right:6px;font-weight:600;font-size:15px;color:inherit;text-decoration:none;white-space:nowrap}
+#hlp{font-size:14px;font-weight:600;color:inherit;display:inline-flex;align-items:center;min-height:32px;padding:0 4px}
 </style>
 </head>
 <body>
 <div class="w">
 <header><a class="hubback" href="/" aria-label="All apps">‹ Apps</a><div id="brand"><img id="logo" alt="Boreal E-line Pump Down" width="60" height="46"></div><h1>Trailer supplies request</h1><button class="btn alt" id="clr">Clear form</button></header>
-<div id="sbar"><span id="st" role="status">Online</span><span id="sv"></span><span id="ls" role="status"></span></div>
+<div id="sbar"><span id="st" role="status">Online</span><span id="sv"></span><span id="ls" role="status"></span><a id="hlp" href="help.html">How to use</a></div>
 <div id="inst" hidden><strong>Install the form on your phone</strong><span id="insttx"></span><span><button type="button" class="btn" id="instgo">Install</button> <button type="button" class="btn alt" id="instx">Not now</button></span></div>
 <div id="cneed" role="alert" hidden><strong>Access code needed to send your waiting request.</strong><label>Access code<input id="code2" type="password" autocomplete="off" autocapitalize="off" autocorrect="off"></label><p id="cmsg2" style="color:var(--bad);font-weight:600;margin:0" hidden></p><button type="button" class="btn" id="csend">Enter code and send</button></div>
 <div id="rjb" role="alert" hidden><strong id="rjt"></strong><p id="rjm" style="margin:0"></p><span><button type="button" class="btn" id="rjfix">Fix request</button> <button type="button" class="btn alt" id="rjtry">Try again</button></span></div>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to use Trailer Supplies</title>
+<meta name="theme-color" content="#14181a">
+<link rel="icon" href="icon-192.png">
+<style>
+/* Help page for the Trailer supplies request form: same look as the form, readable on a phone, works offline. */
+:root{color-scheme:light dark;--bg:light-dark(#f1f0ea,#15181a);--card:light-dark(#fff,#1f2326);--ink:light-dark(#1b1f1d,#eef0ee);--mute:light-dark(#5d6762,#9aa6a0);--line:light-dark(#d6d4c8,#343a37);--acc:light-dark(#8a6400,#e0a100)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{position:sticky;top:0;z-index:2;background:var(--card);border-bottom:1px solid var(--line);padding:10px max(4vw,14px);display:flex;align-items:center;gap:16px}
+header a{color:var(--acc);font-weight:600;text-decoration:none;min-height:44px;display:flex;align-items:center}
+nav{display:flex;gap:8px;overflow-x:auto;padding:10px max(4vw,14px);background:var(--bg);border-bottom:1px solid var(--line)}
+nav a{flex:none;font-size:14px;color:var(--ink);text-decoration:none;border:1px solid var(--line);background:var(--card);border-radius:20px;padding:6px 12px}
+main{max-width:760px;margin:0 auto;padding:6px max(4vw,14px) 60px}
+h1{font-size:28px;line-height:1.15;margin:18px 0 6px}
+h2{font-size:21px;margin:34px 0 8px;scroll-margin-top:120px}
+h3{font-size:17px;margin:22px 0 4px}
+p,li{max-width:68ch}
+img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:10px;margin:12px 0;background:#fff}
+img.narrow{max-width:360px}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0;background:var(--card)}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+th{background:light-dark(#eceae0,#262b2d)}
+td:first-child{font-weight:700;color:var(--acc);width:2.4em;text-align:center}
+table.plain td:first-child{text-align:left;width:auto;color:var(--ink)}
+code{background:light-dark(#eceae0,#262b2d);padding:1px 5px;border-radius:4px;overflow-wrap:anywhere}
+.lead{color:var(--mute)}
+.flow{display:flex;flex-direction:column;gap:0;margin:14px 0}
+.flow div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.flow div+div{margin-top:22px;position:relative}
+.flow div+div::before{content:"\2193";position:absolute;top:-22px;left:0;right:0;text-align:center;color:var(--acc);font-weight:700;line-height:22px}
+.flow>div>b:first-child{display:block}
+.note{border-left:4px solid #e0a100;background:var(--card);padding:8px 12px;border-radius:0 8px 8px 0;margin:12px 0}
+</style>
+</head>
+<body>
+<header><a href="./">‹ Back to Trailer Supplies</a><a href="/">‹ Apps</a></header>
+<nav>
+<a href="#flow">How it works</a><a href="#install">Install</a><a href="#fill">Filling it out</a><a href="#items">Picking items</a><a href="#submit">Review &amp; submit</a><a href="#offline">No signal</a><a href="#sup">Supervisor review</a><a href="#emails">Emails &amp; PDF</a><a href="#fix">Problems</a><a href="#admin">Admin</a>
+</nav>
+<main>
+<h1>How to use Trailer Supplies</h1>
+<p class="lead">This is the trailer restock list. A tech picks what the trailer needs, the unit supervisor checks it, and the tech team gets one clean order. It works without signal: a request is saved on the phone and sent as soon as it's back online.</p>
+<p class="lead">The pictures use sample data (trailer T-12, unit 12, Sample Energy). Items and photos on your phone come from the live list.</p>
+
+<h2 id="flow">How a request travels</h2>
+<div class="flow">
+<div><b>1. Tech fills out the form</b>Picks items, taps <b>Review request</b>, then <b>Submit</b>.</div>
+<div><b>2. Unit email arrives</b>The unit's address (for example borealpd12) gets the request as a PDF, plus a <b>Review and send to the tech team</b> link.</div>
+<div><b>3. Supervisor reviews</b>Opens the link, fixes quantities if needed, types their name, taps <b>Send to tech team</b>.</div>
+<div><b>4. Tech team gets the order</b>One email with the PDF, showing who submitted and who reviewed it.</div>
+<div><b>5. Unit gets the final copy, only if something changed</b>An <b>UPDATED</b> email with the final PDF, to print and check against what arrives.</div>
+</div>
+<div class="note"><b>Tech only</b> requests (a tech ordering for themselves, no unit) skip steps 2, 3 and 5 and go straight to the tech team.</div>
+
+<h2 id="install">Put it on your home screen</h2>
+<p>Install it once so it opens like an app and works with no signal. The first time you open the form on a phone, a banner offers it.</p>
+<img class="narrow" src="help/install.jpg" alt="Install banner with callouts 1 and 2" loading="lazy">
+<table>
+<tr><th>#</th><th>Button</th><th>What it does</th></tr>
+<tr><td>1</td><td>Install</td><td>Adds the form to your home screen (Android / Chrome)</td></tr>
+<tr><td>2</td><td>Not now</td><td>Hides the banner for a while</td></tr>
+</table>
+<p><b>iPhone:</b> open the form in Safari, tap the Share button, then <b>Add to Home Screen</b>. The banner shows the same steps.</p>
+<img class="narrow" src="help/install-ios.jpg" alt="iPhone install instructions" loading="lazy">
+
+<h2 id="fill">Filling out the top of the form</h2>
+<img class="narrow" src="help/screen.jpg" alt="Form header with numbered callouts 1 to 9" loading="lazy">
+<table>
+<tr><th>#</th><th>Area</th><th>What it's for</th></tr>
+<tr><td>1</td><td>Clear form</td><td>Wipes everything you've entered and starts fresh</td></tr>
+<tr><td>2</td><td>Status</td><td><b>Online</b> or <b>Offline</b>. Offline is fine; keep working</td></tr>
+<tr><td>3</td><td>Last submission</td><td>When you last sent a request from this phone</td></tr>
+<tr><td>4</td><td>Header fields</td><td>Trailer, unit number, client, pad/location and your name. The unit number decides which unit email address the request goes to</td></tr>
+<tr><td>5</td><td>Tech only</td><td>Tick it to send straight to the tech team with no unit review</td></tr>
+<tr><td>6</td><td>Sends to</td><td>Shows the address the request will go to, so you can check the unit number</td></tr>
+<tr><td>7</td><td>Additional items</td><td>Anything that isn't in the list. One item per line, with a quantity</td></tr>
+<tr><td>8</td><td>Search</td><td>Search the list by name or part number</td></tr>
+<tr><td>9</td><td>Review request</td><td>Checks your entries and takes you to the review page</td></tr>
+</table>
+<p>Everything you type is saved on the phone as you go. If the app closes or you lose signal, it will still be there when you come back.</p>
+
+<h2 id="items">Picking items</h2>
+<img class="narrow" src="help/pick.jpg" alt="Item list with numbered callouts 1 to 8" loading="lazy">
+<table>
+<tr><th>#</th><th>Area</th><th>What it's for</th></tr>
+<tr><td>1</td><td>Search</td><td>Type part of a name or part number; the list narrows as you type</td></tr>
+<tr><td>2</td><td>Category chips</td><td>Tap a category to show only those items. <b>All</b> shows everything, grouped by category</td></tr>
+<tr><td>3</td><td>Item card</td><td>Photo, name, part number and the most you can request. Cards with a quantity are outlined</td></tr>
+<tr><td>4</td><td>Minus</td><td>One step down. Goes to 0 to remove it</td></tr>
+<tr><td>5</td><td>Plus</td><td>One step up, until the item's maximum</td></tr>
+<tr><td>6</td><td>Item count</td><td>How many different items are selected</td></tr>
+<tr><td>7</td><td>Review request</td><td>Same button as at the top, always in reach</td></tr>
+<tr><td>8</td><td>Back to top</td><td>Appears once you've scrolled a long way</td></tr>
+</table>
+<p>Some items go up in steps (for example boxes of 50) and every item has a maximum. Those limits are set in the item list, not on your phone.</p>
+
+<h2 id="submit">Review and submit</h2>
+<p>The review page shows everything you entered. Check the unit number: it decides where the request goes.</p>
+<img class="narrow" src="help/review.jpg" alt="Review page with callouts 1 to 4" loading="lazy">
+<table>
+<tr><th>#</th><th>Area</th><th>What it's for</th></tr>
+<tr><td>1</td><td>Notice</td><td>Reminder to check the details before sending</td></tr>
+<tr><td>2</td><td>Summary</td><td>Header details, then every item with its quantity</td></tr>
+<tr><td>3</td><td>Back</td><td>Return and change anything</td></tr>
+<tr><td>4</td><td>Submit</td><td>Sends the request to the address shown (for example borealpd12)</td></tr>
+</table>
+<p>After sending, the form shows a confirmation and clears for the next request. Nothing needs saving or downloading; the PDF is emailed for you.</p>
+<img class="narrow" src="help/sent.jpg" alt="Confirmation after submitting with callouts 1 to 3" loading="lazy">
+<table>
+<tr><th>#</th><th>Area</th><th>What it's for</th></tr>
+<tr><td>1</td><td>Last submission</td><td>Updates to the time you just sent</td></tr>
+<tr><td>2</td><td>Message</td><td>Confirms where the request was sent</td></tr>
+<tr><td>3</td><td>Saved to device</td><td>Your draft is cleared and ready for the next trailer</td></tr>
+</table>
+<p>Limit: each trailer can send up to <b>5 requests a day</b>. Supervisor edits don't count toward that.</p>
+
+<h2 id="offline">When you have no signal</h2>
+<p>Fill out and submit as normal. The form holds the request on the phone and sends it by itself when signal returns. Leave the form open or reopen it; either works.</p>
+<img class="narrow" src="help/offline.jpg" alt="Offline status with callouts 1 to 3" loading="lazy">
+<table>
+<tr><th>#</th><th>Area</th><th>What it's for</th></tr>
+<tr><td>1</td><td>Offline</td><td>No connection right now</td></tr>
+<tr><td>2</td><td>Waiting to send</td><td>A request is saved on this phone and hasn't gone out yet</td></tr>
+<tr><td>3</td><td>Message</td><td>Says it will send when you're back online</td></tr>
+</table>
+<div class="note">Don't submit the same request twice while it says waiting. Each request has its own ID, so duplicates are caught, but the wait is just for signal.</div>
+
+<h2 id="sup">Supervisor review</h2>
+<p>The unit's email has a <b>Review and send to the tech team</b> link. It opens the request in the same form, ready to edit. The link works for 14 days and can be used once.</p>
+<img class="narrow" src="help/sup-edit.jpg" alt="Supervisor edit view with callouts 1 to 4" loading="lazy">
+<table>
+<tr><th>#</th><th>Area</th><th>What it's for</th></tr>
+<tr><td>1</td><td>Banner</td><td>Shows this is a review of a submitted request</td></tr>
+<tr><td>2</td><td>Supervisor name</td><td>Required. It prints on the order as <b>Reviewed by</b></td></tr>
+<tr><td>3</td><td>Additional items</td><td>Edit, add or delete lines</td></tr>
+<tr><td>4</td><td>Review request</td><td>Moves to the final check</td></tr>
+</table>
+<p>Change quantities with plus and minus, add items from the list, or remove them. Then tap <b>Review request</b>.</p>
+<img class="narrow" src="help/sup-send.jpg" alt="Supervisor send page with callouts 1 to 3" loading="lazy">
+<table>
+<tr><th>#</th><th>Area</th><th>What it's for</th></tr>
+<tr><td>1</td><td>Notice</td><td>Says this goes to the tech team</td></tr>
+<tr><td>2</td><td>Back</td><td>Return and edit again</td></tr>
+<tr><td>3</td><td>Send to tech team</td><td>Sends the order. The button says <b>Sending…</b> for a few seconds; wait for the confirmation</td></tr>
+</table>
+<p>Once sent, the link is closed. Nothing to print or forward by hand.</p>
+
+<h2 id="emails">The emails and the PDF</h2>
+<p>Every email has the request attached as a PDF, sorted by category and then item name.</p>
+
+<h3>1. Unit email (after the tech submits)</h3>
+<p>Goes to the unit address. The tech team does not get the order until the supervisor opens the link and sends it, even when nothing needs changing.</p>
+<img class="narrow" src="help/email-unit.jpg" alt="Unit email with review link" loading="lazy">
+
+<h3>2. Tech team email (after the supervisor sends)</h3>
+<p>Goes to everyone on the tech list. It names who submitted and who reviewed. Requests that were marked tech only show just the submitter.</p>
+<img class="narrow" src="help/email-tech.jpg" alt="Tech team email" loading="lazy">
+
+<h3>3. UPDATED email (only if the supervisor changed something)</h3>
+<p>Goes back to the unit with the final PDF. Print it and check it against the delivery.</p>
+<img class="narrow" src="help/email-update.jpg" alt="UPDATED email to the unit" loading="lazy">
+
+<h3>The PDF</h3>
+<img src="help/pdf-tech.jpg" alt="Top of the PDF with the header and item table" loading="lazy">
+<table class="plain">
+<tr><th>Column</th><th>Meaning</th></tr>
+<tr><td>Category</td><td>Where the item sits in the list</td></tr>
+<tr><td>Item</td><td>Item name</td></tr>
+<tr><td>Part #</td><td>Part number, or a dash if none</td></tr>
+<tr><td>Qty</td><td>Quantity requested</td></tr>
+</table>
+<p>Additional items are listed under the table, one per line. The header shows date, trailer, unit, client, location, who submitted, who reviewed and where it was sent.</p>
+
+<h2 id="fix">If something goes wrong</h2>
+<table class="plain">
+<tr><th>You see</th><th>What to do</th></tr>
+<tr><td>Waiting to send</td><td>Get signal and keep the form open. It sends by itself</td></tr>
+<tr><td>A red banner that the request was rejected</td><td>Tap <b>Fix request</b>, correct what it says, and submit again</td></tr>
+<tr><td>Banner with <b>Try again</b></td><td>Usually a bad connection. Tap it once you have signal</td></tr>
+<tr><td>Access code needed</td><td>Ask the office for the code. It's only used if that setting is switched on</td></tr>
+<tr><td>Limit reached</td><td>That trailer has sent 5 requests today. Try tomorrow, or have the supervisor edit the existing one</td></tr>
+<tr><td>Review link not valid</td><td>The link is older than 14 days or was already used. Ask the tech to submit again</td></tr>
+<tr><td>Item list looks old</td><td>Phones refresh the list about once a day. Close all browser windows and reopen the form</td></tr>
+<tr><td>No email arrived</td><td>Check the unit number in <b>Sends to</b> and your junk folder. Then tell the admin</td></tr>
+</table>
+
+<h2 id="admin">For the admin: Airtable</h2>
+<p>All the list data lives in Airtable. No code changes are needed for these.</p>
+
+<h3>Items table</h3>
+<ul>
+<li><b>Item Name, Category, Max Qty, Qty Step, Part Number, Notes:</b> shown on the item card.</li>
+<li><b>Active:</b> ticked shows the item on the form; unticked hides it.</li>
+<li><b>Image File:</b> add a photo to the attachment field. About an hour later it's copied to Drive and shows on the form. Only the first photo is used.</li>
+<li><b>Category order:</b> follows the order categories first appear in the table.</li>
+</ul>
+
+<h3>Settings table</h3>
+<table class="plain">
+<tr><th>Setting</th><th>What it does</th></tr>
+<tr><td>Require access code</td><td>Yes or No. Leave No unless you need it</td></tr>
+<tr><td>Access code / Previous access code</td><td>The code, and the old code for a few days after changing it</td></tr>
+<tr><td>Daily limit per trailer</td><td>Most requests per trailer per day (5)</td></tr>
+<tr><td>Review link valid days</td><td>How long the supervisor link works (14)</td></tr>
+<tr><td>Unit email pattern</td><td><code>borealpd{unit}@bonnettsenergy.com</code>; <code>{unit}</code> is the unit number typed on the form</td></tr>
+<tr><td>Catalog refresh hours</td><td>How often phones refetch the item list (24)</td></tr>
+</table>
+
+<h3>Email List table</h3>
+<p>Everyone in the <b>Tech emails</b> column gets every tech team order. Add or remove rows to change who receives it.</p>
+
+<h3>Requests table</h3>
+<p>A record of every request: items, who sent it, status (<b>Sent to unit</b> or <b>Sent to tech</b>) and email status. The review token column is private; don't share it.</p>
+
+<h3>Changes not showing up?</h3>
+<p>The script caches the item list for an hour and settings for 5 minutes. To see a change right away, run <code>clearCache</code> in the Apps Script editor. To pull new photos now, run <code>syncImages</code>. Changing the script code needs <b>Deploy &gt; Manage deployments &gt; pencil &gt; New version</b>.</p>
+</main>
+</body>
+</html>
